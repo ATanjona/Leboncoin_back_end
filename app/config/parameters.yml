@@ -1,0 +1,16 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: leboncoin_api
+    database_user: root
+    database_password:
+    mailer_transport: smtp
+    mailer_host: smtp.gmail.com
+    mailer_user: tolotrarazafindrabe@gmail.com
+    mailer_password: uyznwdrwbjqdyand
+    mailer_auth_mode: login
+    mailer_port: 587
+    mailer_encryption: tls
+    secret: ThisTokenIsNotSoSecretChangeIt
+    cors_allow_origin: 'http://localhost:3000' 
