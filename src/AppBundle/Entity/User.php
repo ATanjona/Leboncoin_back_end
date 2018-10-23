@@ -25,14 +25,28 @@ class User implements UserInterface, EquatableInterface
      */
     private $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Annonces", mappedBy="user", cascade={"persist", "remove"})
+     *
+     */
 
-/**
+    /**
+     * @var int
+     * 
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\TypeUtilisateur", inversedBy="user")
+     * @Assert\NotBlank()
+     */
+    private $typeUtilisateur;
+
+    private $annonces;
+    
+     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, nullable=true)
      * 
      */
-    
+     
     private $username;
 
     /**
@@ -126,17 +140,13 @@ class User implements UserInterface, EquatableInterface
      */
     private $activationTokenDelay;
 
-    /**
-     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Annonces", mappedBy="user", cascade={"persist", "remove"})
-     *
-     */
-    private $annonces;
 
     /**
      * @var string
      *
      * @ORM\Column(name="api_key", type="string",length=255, unique=true, nullable=true)
      */
+
     private $apiKey;
 
     /**
@@ -160,6 +170,30 @@ class User implements UserInterface, EquatableInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set typeUtilisateur
+     *
+     * @param \AppBundle\Entity\TypeUtilisateur $typeUtilisateur
+     *
+     * @return User
+     */
+    public function setTypeUtilisateur(\AppBundle\Entity\TypeUtilisateur $typeUtilisateur = null)
+    {
+        $this->typeUtilisateur = $typeUtilisateur;
+
+        return $this;
+    } 
+
+    /**
+     * Get typeUtilisateur
+     *
+     * @return \AppBundle\Entity\TypeUtilisateur
+     */
+    public function getTypeUtilisateur()
+    {
+        return $this->typeUtilisateur;
     }
 
     /**

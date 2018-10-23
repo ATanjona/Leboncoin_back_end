@@ -24,7 +24,6 @@ class UserType extends AbstractType
         ->add('numStat')
         ->add('telSociete')
         ->add('password');
-
     }/**
      * {@inheritdoc}
      */

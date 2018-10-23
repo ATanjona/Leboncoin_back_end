@@ -1,5 +1,6 @@
 imports:
     - { resource: ../config/default.yml }
+    - { resource: ../config/sensio_framework_extra.yml }
 
 framework:
     serializer:
@@ -33,3 +34,6 @@ fos_rest:
             - custom_header
             - media_type
             - query
+
+twig:
+    strict_variables: '%kernel.debug%'

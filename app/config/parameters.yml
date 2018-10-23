@@ -4,7 +4,7 @@ parameters:
     database_port: null
     database_name: leboncoin_api
     database_user: root
-    database_password:
+    database_password: null
     mailer_transport: smtp
     mailer_host: smtp.gmail.com
     mailer_user: tolotrarazafindrabe@gmail.com
@@ -13,4 +13,5 @@ parameters:
     mailer_port: 587
     mailer_encryption: tls
     secret: ThisTokenIsNotSoSecretChangeIt
-    cors_allow_origin: 'http://localhost:3000' 
+    cors_allow_origin: 'http://localhost:3006'
+    redirect_url: 'http://localhost:3006/compte/compteConfirmer'

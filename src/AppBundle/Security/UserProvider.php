@@ -41,14 +41,12 @@ class UserProvider implements UserProviderInterface
         $query->setParameter('is_active',true);
         $userData = $query->getOneOrNullResult();
         // pretend it returns an array on success, false if there is no user
-        
-        
         if ($userData) {
             return $userData;
         }
-
         throw new UsernameNotFoundException(
             sprintf('Pseudo or username "%s" does not exist.', $username)
         );
+
     }
 }

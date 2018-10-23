@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<form action="" method="post" enctype="multipart/form-data">
+<input type="file" name="flyerFile"><br/>
+<input type="text" name="libelleTypeCategorie" placeholder="libelleTypeCategorie"><br/>
+<input type="text" name="libelleTypeAnnonce" placeholder="typeAnnonce"><br/>
+<input type="text" name="libelleTypeUtilisa" placeholder="typeUtilisateur"><br/>
+<input type="text" name="titre" placeholder="titre"><br/>
+<input type="text" name="text" placeholder="text"><br/>
+<input type="text" name="prix" placeholder="prix"><br/>
+<input type="text" name="ville" placeholder="ville"><br/>
+<input type="text" name="adresse" placeholder="adresse"><br/>
+<input type="text" name="date_start" placeholder="date start"><br/>
+<input type="text" name="date_end" placeholder="date end"><br/>
+    <input type="submit" value="Ajouter Image">
+</form>
+{% endblock %}

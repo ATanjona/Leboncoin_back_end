@@ -1,0 +1,124 @@
+
+***************************************************** USER ************************************************
+
+*****Inscription/Insersion*****
+
+http://localhost/leboncoin_api/web/app_dev.php/inscription
+POST
+
+----Body                 form-data
+
+username:RLucas24
+nom:robert
+prenom:fenoson
+email:fenosonrobert@gmail.com
+civilite:Mr
+nomSociete:Trustylabs
+adresseSociete:Mahamasina
+numStat:2323
+telSociete:0348128577
+password:robert
+
+*****Connexion/login*****
+
+http://localhost/leboncoin_api/web/app_dev.php/connexion
+POST
+
+
+
+----Header 	     Content-Type:           application/json
+
+----Body             x-www-form-urlencoded
+
+
+username:RLucas24
+password:robert
+
+
+******Modification*********
+
+http://localhost/leboncoin_api/web/app_dev.php/compte/modifier/{id}
+PUT
+
+----Header		X-AUTH-TOKEN:           2f06291cb76f41ad1c8527c49fe4201b   (Api_key: varie)
+			Content-Type:           application/x-www-form-urlencoded
+----Body             x-www-form-urlencoded
+
+
+
+username:RLucas24
+nom:Razafindrainibe
+prenom:fenoson robert
+email:fenosonrobert@gmail.com
+civilite:Mr
+nomSociete:Trustylabs
+adresseSociete:Mahamasina
+numStat:2324
+telSociete:0348128577
+password:robert
+
+
+******* Suppression ******
+
+http://localhost/leboncoin_api/web/app_dev.php/compte/supprimer/{id}
+DELETE
+
+----Header		X-AUTH-TOKEN:           2f06291cb76f41ad1c8527c49fe4201b   (Api_key: varie)
+
+
+*********************************************    ANNONCE   ********************************************
+
+***** DEPOSER ANNONCES *******
+
+http://localhost/leboncoin_api/web/app_dev.php/deposer/annonce
+POST
+
+----Header		X-AUTH-TOKEN:           2f06291cb76f41ad1c8527c49fe4201b 	(Api_key: varie)
+			Content-Type:application/json
+
+----Body                form-data
+
+libelleTypeCategorie:Maison
+libelleTypeUtilisa:Particulier
+libelleTypeAnnonce:Demandes
+titre:Fiara
+text:2em plan a Ambohijatovo
+prix:20000000
+flyer:image/mason.jpg
+codePostal:FIANARANTSOA
+adresse:Antananarivo
+startDate:2018-10-04
+endDate:2018-12-24
+
+
+****** MODIFIER ANNONCE ******
+
+http://localhost/leboncoin_api/web/app_dev.php/annonce/modifier/{id}
+PUT
+
+
+----Header		X-AUTH-TOKEN:           2f06291cb76f41ad1c8527c49fe4201b   (Api_key: varie)
+			Content-Type:           application/x-www-form-urlencoded
+
+----Body                x-www-form-urlencoded
+
+libelleTypeCategorie:MaisonModifier
+libelleTypeUtilisa:Particulier
+libelleTypeAnnonce:Demandes
+titre:Mason A louer
+text:2em plan a Ambohijatovo
+prix:20000000
+flyer:image/mason.jpg
+codePostal:301
+adresse:Antananarivo
+startDate:2018-10-04
+endDate:
+
+
+****** SUPPRIMER ANNONCE ******
+
+http://localhost/leboncoin_api/web/app_dev.php/annonce/supprimer/{id}
+DELETE
+
+-----header 			Content-Type:			application/x-www-form-urlencoded
+				X-AUTH-TOKEN:			2f06291cb76f41ad1c8527c49fe4201b

@@ -1,5 +1,6 @@
 imports:
     - { resource: ../config/default.yml }
+    - { resource: ../config/sensio_framework_extra.yml }
 
 framework:
     serializer: true
@@ -14,6 +15,9 @@ fos_rest:
 sensio_framework_extra:
     request:
         converters: true
+
+twig:
+    strict_variables: '%kernel.debug%'
 
 services:
     get_set_method_normalizer:

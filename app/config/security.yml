@@ -16,6 +16,8 @@ security:
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
+        
+        # the url don't need API_key 
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -25,6 +27,15 @@ security:
         main_login:
             pattern: ^/(login|inscription)
             anonymous: true
+
+        main_annonce:
+            pattern: ^/(admin|deposer/annonce|upload/image|uploadImage|demande|demandePart|demandePro|offre|offrePart|offrePro|derniereOffre|derniereDemande)
+            anonymous: true
+
+        main_autre:
+            pattern: ^/(categorie|typeAnnonce|vehicule|modeBeaute|maison|travailEmploi|agriculture|multimedia|immobilier|materielDivers)
+            anonymous: true
+
         main:
             pattern: ^/
             anonymous: false
@@ -33,6 +44,10 @@ security:
             stateless: true
             simple_preauth:
                 authenticator: AppBundle\Security\ApiKeyAuthenticator
+
+        
+
+   
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate

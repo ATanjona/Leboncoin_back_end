@@ -1,5 +1,6 @@
 imports:
     - { resource: ../config/default.yml }
+    - { resource: ../config/sensio_framework_extra.yml }
 
 framework:
     serializer:
@@ -16,3 +17,6 @@ fos_rest:
     format_listener:
         rules:
             - { path: ^/, priorities: [ html, json, xml ], fallback_format: ~, prefer_extension: true }
+
+twig:
+    strict_variables: '%kernel.debug%'

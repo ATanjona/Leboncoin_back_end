@@ -1,7 +1,12 @@
-Bonjour {{ username }}! <br/>
+Bonjour {{ username }}, <br/>
 
-Merci d'avoir créé un compte Leboncoin ! Avant de continuer, 
-nous avons juste besoin de confirmer que c'est vous. Cliquez sur le lien ci-dessous pour vérifier votre adresse mail :
-
+Merci d'avoir créé un compte Leboncoin !<br/> 
+Pour activer votre compte, merci de bien vouloir cliquer sur le lien ci-dessous:
+<br/>
 <a href="{{ url("confirm_account",{'token' : activationToken}) }}">Vérifier l'adresse mail</a>.
-
+<br/>
+<br/>
+Merci de votre confiance,<br/>
+<br/>
+L'equipe leboncoin<br/>
+<a href="http://localhost:3006">www.leboncoin.mg</a>.

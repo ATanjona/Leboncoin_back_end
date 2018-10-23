@@ -1,5 +1,6 @@
 imports:
     - { resource: ../config/default.yml }
+    - { resource: ../config/sensio_framework_extra.yml }
     - { resource: security.php }
 
 framework:
@@ -28,3 +29,6 @@ fos_rest:
 
 web_profiler:
     toolbar: true
+
+twig:
+    strict_variables: '%kernel.debug%'

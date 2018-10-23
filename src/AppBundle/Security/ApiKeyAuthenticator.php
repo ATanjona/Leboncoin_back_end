@@ -99,9 +99,11 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface,Authenticat
         // exit();
         if(!$user)
         {
-            throw new CustomUserMessageAuthenticationException(
-                sprintf('API Key "%s" does not exist.', $apiKey)
-            );
+        return new JsonResponse('login ou mot de passe incorrect');
+        /*throw new CustomUserMessageAuthenticationException(
+                //sprintf('API Key "%s" does not exist.', $apiKey)
+                sprintf('Mot de passe incorrect')
+            );*/
         }
         return new PreAuthenticatedToken(
             $user,
@@ -112,9 +114,11 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface,Authenticat
     }
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        return new JsonResponse(
+         return new JsonResponse('login ou mot de passe incorrect');
+        /*return new JsonResponse(
+
             strtr($exception->getMessageKey(), $exception->getMessageData()),
             401
-        );
+        );*/
     }
 }

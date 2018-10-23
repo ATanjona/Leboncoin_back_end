@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
 * @ORM\Entity()
 * @ORM\Table(name="annonces")}
-* )
+* 
 */
 
 class Annonces
@@ -30,30 +32,29 @@ class Annonces
     private $user;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="categorie", type="string", length=255, nullable=true)
+     * @var int
+     * 
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\Categorie", inversedBy="annonces")
      * @Assert\NotBlank()
      */
     private $categorie;
 
     
-
     /**
-     * @var string
-     *
-     * @ORM\Column(name="typeUser", type="string", length=255, nullable=true)
+     * @var int
+     * 
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\TypeUtilisateur", inversedBy="annonces")
      * @Assert\NotBlank()
      */
-    private $typeUser;
+    private $typeUtilisateur;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="typeAnnonc", type="string", length=255, nullable=true)
+     * @var int
+     * 
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\TypeAnnonce", inversedBy="annonces")
      * @Assert\NotBlank()
      */
-    private $typeAnnonc;
+    private $typeAnnonce;
 
     /**
      * @var string
@@ -81,26 +82,47 @@ class Annonces
     /**
      * @var string
      *
-     * @ORM\Column(name="Flyer", type="string", length=255)
+     * @ORM\Column(name="flyer", type="string", length=255, nullable=true)
      * @Assert\NotBlank()
      */
     private $flyer;
 
     /**
+     * @var UploadedFile
+     */
+    private $flyerFile;
+
+    /**
      * @var int
-     *
-     * @ORM\Column(name="codePostal", type="integer", length=255)
+     * 
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\Ville", inversedBy="annonces")
      * @Assert\NotBlank()
      */
-    private $codePostal;
+    private $ville;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=255)
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
      * @Assert\NotBlank()
      */
     private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="emailAnnonce", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     */
+    private $emailAnnonce;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telAnnonce", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $telAnnonce;
 
     /**
      * @var \Date
@@ -126,6 +148,13 @@ class Annonces
      */
     private $isPublish;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_isPublished", type="datetime", nullable=true)
+     * @Assert\NotBlank()
+     */
+    private $isPublishDate;
 
     /**
      * Get id
@@ -136,12 +165,13 @@ class Annonces
     {
         return $this->id;
     }
+
     /**
      * Set user
      *
      * @param \AppBundle\Entity\User $user
      *
-     * @return Events
+     * @return Annonces
      */
     public function setUser(\AppBundle\Entity\User $user = null)
     {
@@ -163,74 +193,73 @@ class Annonces
     /**
      * Set categorie
      *
-     * @param string $categorie
+     * @param \AppBundle\Entity\Categorie $categorie
      *
      * @return Annonces
      */
-    public function setCategorie($categorie)
+    public function setCategorie(\AppBundle\Entity\Categorie $categorie = null)
     {
         $this->categorie = $categorie;
 
         return $this;
-    }
+    } 
 
     /**
      * Get categorie
      *
-     * @return string
+     * @return \AppBundle\Entity\Categorie
      */
     public function getCategorie()
     {
         return $this->categorie;
     }
 
-
     /**
-     * Set typeUser
+     * Set typeUtilisateur
      *
-     * @param string $typeUser
+     * @param \AppBundle\Entity\TypeUtilisateur $typeUtilisateur
      *
      * @return Annonces
      */
-    public function setTypeUser($typeUser)
+    public function setTypeUtilisateur(\AppBundle\Entity\TypeUtilisateur $typeUtilisateur = null)
     {
-        $this->typeUser = $typeUser;
+        $this->typeUtilisateur = $typeUtilisateur;
 
         return $this;
-    }
+    } 
 
     /**
-     * Get typeUser
+     * Get typeUtilisateur
      *
-     * @return string
+     * @return \AppBundle\Entity\TypeUtilisateur
      */
-    public function getTypeUser()
+    public function getTypeUtilisateur()
     {
-        return $this->typeUser;
+        return $this->typeUtilisateur;
     }
 
     /**
-     * Set typeAnnonc
+     * Set typeAnnonce
      *
-     * @param string $typeAnnonc
+     * @param \AppBundle\Entity\TypeAnnonce $typeAnnonce
      *
      * @return Annonces
      */
-    public function setTypeAnnonc($typeAnnonc)
+    public function setTypeAnnonce(\AppBundle\Entity\TypeAnnonce $typeAnnonce = null)
     {
-        $this->typeAnnonc = $typeAnnonc;
+        $this->typeAnnonce = $typeAnnonce;
 
         return $this;
-    }
+    } 
 
     /**
-     * Get typeAnnonc
+     * Get typeAnnonce
      *
-     * @return string
+     * @return \AppBundle\Entity\TypeAnnonce
      */
-    public function getTypeAnnonc()
+    public function getTypeAnnonce()
     {
-        return $this->typeAnnonc;
+        return $this->typeAnnonce;
     }
 
     /**
@@ -330,27 +359,27 @@ class Annonces
     }
 
     /**
-     * Set codePostal
+     * Set ville
      *
-     * @param integer $codePostal
+     * @param \AppBundle\Entity\Ville $ville
      *
      * @return Annonces
      */
-    public function setCodePostal($codePostal)
+    public function setVille(\AppBundle\Entity\Ville $ville = null)
     {
-        $this->codePostal = $codePostal;
+        $this->ville = $ville;
 
         return $this;
-    }
+    } 
 
     /**
-     * Get codePostal
+     * Get ville
      *
-     * @return int
+     * @return \AppBundle\Entity\Ville
      */
-    public function getCodePostal()
+    public function getVille()
     {
-        return $this->codePostal;
+        return $this->ville;
     }
 
     /**
@@ -375,6 +404,54 @@ class Annonces
     public function getAdresse()
     {
         return $this->adresse;
+    }
+
+        /**
+     * Set emailAnnonce
+     *
+     * @param string $emailAnnonce
+     *
+     * @return Annonces
+     */
+    public function setEmailAnnonce($emailAnnonce)
+    {
+        $this->emailAnnonce = $emailAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get emailAnnonce
+     *
+     * @return string
+     */
+    public function getEmailAnnonce()
+    {
+        return $this->emailAnnonce;
+    }
+
+        /**
+     * Set telAnnonce
+     *
+     * @param string $telAnnonce
+     *
+     * @return Annonces
+     */
+    public function setTelAnnonce($telAnnonce)
+    {
+        $this->telAnnonce = $telAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get telAnnonce
+     *
+     * @return string
+     */
+    public function getTelAnnonce()
+    {
+        return $this->telAnnonce;
     }
 
     /**
@@ -448,7 +525,69 @@ class Annonces
         return $this->isPublish;
     }
 
-    
+    /**
+     * Set isPublishDate
+     *
+     * @param \DateTime $isPublishDate
+     *
+     * @return Annonces
+     */
+    public function setIsPublishDate($isPublishDate)
+    {
+        $this->isPublishDate = $isPublishDate;
+
+        return $this;
+    }
+
+    /**
+     * Get isPublishDate
+     *
+     * @return \DateTime
+     */
+    public function getIsPublishDate()
+    {
+        return $this->isPublishDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFlyerFile()
+    {
+        return $this->flyerFile;
+    }
+
+    /**
+     * @param mixed $flyerFile
+     */
+    public function setFlyerFile($flyerFile)
+    {
+        $this->flyerFile = $flyerFile;
+    }
+
+    public function upload(){
+        if($this->flyerFile == null){
+            return;
+        }
+        $filename = $this->generateUniqueName() . '.'.$this->flyerFile->getClientOriginalExtension();
+        $this->flyerFile->move($this->getRootDir(),$filename);
+        $this->flyer = $filename;
+        return $this;
+    }
+
+    public function generateUniqueName(){
+        return md5(uniqid());
+    }
+
+    public function getUploadDir(){
+        return "uploads/annonces";
+    }
+
+    public function getRootDir(){
+        return __DIR__.'/../../../web/'. $this->getUploadDir();
+    }
+
+
 
 
 }
